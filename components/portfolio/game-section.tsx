@@ -21,6 +21,9 @@ const LEADERBOARD = [
   { name: "NEBULA-7", score: 760 },
 ];
 
+const BUG_MIN_FALL_SPEED = 0.65;
+const BUG_FALL_SPEED_VARIANCE = 0.55;
+
 export function GameSection({ soundOn }: GameSectionProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -143,7 +146,7 @@ export function GameSection({ soundOn }: GameSectionProps) {
             x: Math.random() * (width - 22) + 11,
             y: -18,
             size: Math.random() * 10 + 12,
-            speed: Math.random() * 1.2 + 1.2,
+            speed: Math.random() * BUG_FALL_SPEED_VARIANCE + BUG_MIN_FALL_SPEED,
           });
         }
       }
