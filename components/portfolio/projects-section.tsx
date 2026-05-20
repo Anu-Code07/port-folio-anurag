@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Radar } from "lucide-react";
+import { ExternalLink, GitBranch, Radar } from "lucide-react";
 
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { Badge } from "@/components/ui/badge";
@@ -115,7 +115,7 @@ function HolographicProjectCard({
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-cyan-100 transition-colors hover:text-cyan-300"
             >
-              <Github className="h-4 w-4" /> GitHub
+              <GitBranch className="h-4 w-4" /> GitHub
             </a>
             <a
               href={project.demo}

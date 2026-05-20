@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Github, Linkedin, Mail, Send, Twitter } from "lucide-react";
+import { AtSign, Contact, Download, GitBranch, Globe, Mail, Send } from "lucide-react";
 
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { Badge } from "@/components/ui/badge";
@@ -72,7 +72,7 @@ export function ContactSection() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Linkedin className="h-4 w-4 text-cyan-100" /> LinkedIn
+                  <Contact className="h-4 w-4 text-cyan-100" /> LinkedIn
                 </a>
                 <a
                   className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
@@ -80,7 +80,7 @@ export function ContactSection() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Github className="h-4 w-4 text-cyan-100" /> GitHub
+                  <GitBranch className="h-4 w-4 text-cyan-100" /> GitHub
                 </a>
                 <a
                   className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
@@ -88,7 +88,15 @@ export function ContactSection() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Twitter className="h-4 w-4 text-cyan-100" /> Twitter / X
+                  <AtSign className="h-4 w-4 text-cyan-100" /> Twitter / X
+                </a>
+                <a
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
+                  href="https://anurag.dev"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Globe className="h-4 w-4 text-cyan-100" /> Personal Domain
                 </a>
               </CardContent>
             </Card>
