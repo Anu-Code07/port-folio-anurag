@@ -1,13 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ExternalLink, GitBranch, Radar } from "lucide-react";
 
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { projects } from "@/lib/portfolio-data";
+import { cn } from "@/lib/utils";
 
 interface TiltState {
   rotateX: number;
@@ -17,9 +19,11 @@ interface TiltState {
 function HolographicProjectCard({
   project,
   index,
+  className,
 }: {
   project: (typeof projects)[number];
   index: number;
+  className?: string;
 }) {
   const [tilt, setTilt] = useState<TiltState>({ rotateX: 0, rotateY: 0 });
   const [hovered, setHovered] = useState(false);
@@ -32,7 +36,7 @@ function HolographicProjectCard({
 
   return (
     <motion.article
-      className="reveal-section"
+      className={cn("reveal-section", className)}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
@@ -133,6 +137,46 @@ function HolographicProjectCard({
 }
 
 export function ProjectsSection() {
+  const isMobileOrTablet = useMediaQuery("(max-width: 1024px)");
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [scrollDistance, setScrollDistance] = useState(0);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
+
+  useEffect(() => {
+    if (isMobileOrTablet) {
+      setScrollDistance(0);
+      return;
+    }
+
+    const measure = () => {
+      const viewportWidth = viewportRef.current?.clientWidth ?? 0;
+      const trackWidth = trackRef.current?.scrollWidth ?? 0;
+      setScrollDistance(Math.max(trackWidth - viewportWidth, 0));
+    };
+
+    measure();
+
+    const resizeObserver = new ResizeObserver(measure);
+    if (viewportRef.current) {
+      resizeObserver.observe(viewportRef.current);
+    }
+    if (trackRef.current) {
+      resizeObserver.observe(trackRef.current);
+    }
+
+    window.addEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      resizeObserver.disconnect();
+    };
+  }, [isMobileOrTablet]);
+
   return (
     <section id="projects" className="py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -141,11 +185,38 @@ export function ProjectsSection() {
           title="Floating holographic systems in active orbit"
           description="Every mission card is built as a cinematic control panel with motion layers, architecture insights, and production outcomes."
         />
-        <div className="grid gap-6 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <HolographicProjectCard key={project.title} project={project} index={index} />
-          ))}
-        </div>
+
+        {isMobileOrTablet ? (
+          <div className="grid gap-6 lg:grid-cols-3">
+            {projects.map((project, index) => (
+              <HolographicProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        ) : (
+          <div ref={sectionRef} className="relative h-[230vh]">
+            <div className="sticky top-24 space-y-4">
+              <p className="text-center text-xs tracking-[0.28em] text-cyan-100/80">
+                SCROLL TO NAVIGATE PROJECT DECK
+              </p>
+              <div ref={viewportRef} className="overflow-hidden">
+                <motion.div
+                  ref={trackRef}
+                  className="flex gap-6 pr-10 will-change-transform"
+                  style={{ x }}
+                >
+                  {projects.map((project, index) => (
+                    <HolographicProjectCard
+                      key={project.title}
+                      project={project}
+                      index={index}
+                      className="w-[420px] shrink-0"
+                    />
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
