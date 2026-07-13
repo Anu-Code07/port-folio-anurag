@@ -19,7 +19,18 @@ export const skills = [
   "REST APIs",
 ];
 
-export const projects = [
+export interface Project {
+  title: string;
+  description: string;
+  techStack: string[];
+  github: string;
+  demo?: string;
+  imageUrl?: string;
+  highlights: string[];
+  solved: string;
+}
+
+export const projects: Project[] = [
   {
     title: "NebulaPay Fintech Core",
     description:
@@ -64,6 +75,66 @@ export const projects = [
     ],
     solved:
       "Fixed breaking contract changes by implementing schema diff checks in CI and compatibility adapters.",
+  },
+  {
+    title: "Orbit Notes",
+    description:
+      "A local-first Flutter travel journal for trips, daily entries, photos, map pins, and optional cloud sync.",
+    techStack: ["Flutter", "Dart", "Maps", "Local-first storage", "Cloud sync"],
+    github: "https://github.com/Anu-Code07/orbit-notes",
+    imageUrl: "https://raw.githubusercontent.com/Anu-Code07/orbit-notes/main/docs/screenshots/login.png",
+    highlights: [
+      "Trip, day, and entry structure for travel journals",
+      "Entry-linked photos and location pins",
+      "AI trip planning that can become a real journal",
+    ],
+    solved:
+      "Kept travel memories private and available offline while making sync optional when users want it.",
+  },
+  {
+    title: "Pulse Habit Tracker",
+    description:
+      "A calm habit tracker and focus timer for small daily rituals with private, on-device progress tracking.",
+    techStack: ["Flutter", "Dart", "Local storage", "Widgets", "Focus timer"],
+    github: "https://github.com/Anu-Code07/habbit-tracker",
+    imageUrl: "https://raw.githubusercontent.com/Anu-Code07/habbit-tracker/main/docs/screenshots/today.png",
+    highlights: [
+      "Daily habits, streaks, and weekly insight views",
+      "Pomodoro and free-focus sessions",
+      "Home screen widget for habits and focus minutes",
+    ],
+    solved:
+      "Reduced habit-tracking friction with account-free local data and lightweight progress feedback.",
+  },
+  {
+    title: "Neuron",
+    description:
+      "A context operating system for AI clients with structured project memory, retrieval, and MCP tooling.",
+    techStack: ["Next.js 15", "Supabase", "Postgres", "pgvector", "MCP"],
+    github: "https://github.com/Anu-Code07/neuron",
+    demo: "https://neuron-azure.vercel.app",
+    highlights: [
+      "Hosted dashboard with project memory setup",
+      "31 MCP tools for remembering, retrieving, and managing context",
+      "Hybrid retrieval with knowledge graph and Groq-powered AI tools",
+    ],
+    solved:
+      "Gave AI coding tools durable, project-aware memory without exposing backend credentials to clients.",
+  },
+  {
+    title: "SpecDrive",
+    description:
+      "An AI-agnostic frontend spec-driven development framework for Flutter, Next.js, and React Native.",
+    techStack: ["TypeScript", "CLI", "MCP", "Flutter", "Next.js"],
+    github: "https://github.com/Anu-Code07/spec-copilot",
+    demo: "https://anu-code07.github.io/spec-copilot/",
+    highlights: [
+      "Kiro-style requirements, gap analysis, design, and task documents",
+      "First-class support for Flutter, Next.js, and React Native",
+      "CLI and MCP workflows for frontend implementation review",
+    ],
+    solved:
+      "Created a structured frontend planning path from feature idea to implementation tasks with AI assistance.",
   },
 ];
 

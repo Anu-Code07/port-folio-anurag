@@ -81,17 +81,28 @@ function HolographicProjectCard({
                 {hovered ? "PLAYING" : "IDLE"}
               </span>
             </div>
-            <motion.div
-              className="h-28 rounded-xl bg-[linear-gradient(120deg,rgba(59,130,246,0.22),rgba(192,38,211,0.2),rgba(14,165,233,0.24))]"
-              animate={{
-                backgroundPosition: hovered ? ["0% 50%", "100% 50%"] : ["0% 50%", "40% 50%"],
-              }}
-              transition={{
-                duration: hovered ? 2.3 : 4.2,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
-            />
+            {project.imageUrl ? (
+              <motion.div
+                className="h-28 rounded-xl bg-cover bg-center shadow-[0_0_35px_rgba(34,211,238,0.14)]"
+                style={{
+                  backgroundImage: `linear-gradient(180deg, rgba(2,6,23,0.08), rgba(2,6,23,0.56)), url(${project.imageUrl})`,
+                }}
+                animate={{ scale: hovered ? 1.03 : 1 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              />
+            ) : (
+              <motion.div
+                className="h-28 rounded-xl bg-[linear-gradient(120deg,rgba(59,130,246,0.22),rgba(192,38,211,0.2),rgba(14,165,233,0.24))]"
+                animate={{
+                  backgroundPosition: hovered ? ["0% 50%", "100% 50%"] : ["0% 50%", "40% 50%"],
+                }}
+                transition={{
+                  duration: hovered ? 2.3 : 4.2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
+              />
+            )}
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -121,14 +132,16 @@ function HolographicProjectCard({
             >
               <GitBranch className="h-4 w-4" /> GitHub
             </a>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-fuchsia-100 transition-colors hover:text-fuchsia-300"
-            >
-              <ExternalLink className="h-4 w-4" /> Live Demo
-            </a>
+            {project.demo ? (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-fuchsia-100 transition-colors hover:text-fuchsia-300"
+              >
+                <ExternalLink className="h-4 w-4" /> Live Demo
+              </a>
+            ) : null}
           </div>
         </CardContent>
       </Card>
