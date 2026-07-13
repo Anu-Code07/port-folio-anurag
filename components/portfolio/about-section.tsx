@@ -11,10 +11,10 @@ import { skills } from "@/lib/portfolio-data";
 const orbitSkills = skills.slice(0, 8);
 
 const milestones = [
-  { label: "Years in Production", value: 8, suffix: "+" },
-  { label: "Systems Shipped", value: 42, suffix: "+" },
-  { label: "Apps in Market", value: 30, suffix: "+" },
-  { label: "Client Satisfaction", value: 99, suffix: "%" },
+  { label: "Years in Production", value: 4, suffix: "+" },
+  { label: "Monthly Store Volume", display: "INR 1.2Cr" },
+  { label: "Payment Gateways Integrated", value: 2, suffix: "+" },
+  { label: "Bank Integrations", value: 2, suffix: "" },
 ];
 
 export function AboutSection() {
@@ -83,16 +83,21 @@ export function AboutSection() {
               <CardContent className="space-y-6">
                 <div className="space-y-4 border-l border-cyan-300/25 pl-4">
                   <p className="text-sm text-zinc-300">
-                    <span className="text-cyan-100">Launch:</span> Built resilient
-                    Flutter ecosystems for finance and mobility.
+                    <span className="text-cyan-100">Scapia:</span> Built Scapia Store,
+                    Scapia Buses, and Spitha server-driven UI for instant merchandising.
                   </p>
                   <p className="text-sm text-zinc-300">
-                    <span className="text-cyan-100">Orbit:</span> Scaled Next.js
-                    platforms with design systems and high-fidelity interactions.
+                    <span className="text-cyan-100">Niyo:</span> Championed React
+                    Native, shipped loyalty rewards, multi-bank integrations, PG SDK,
+                    and ops dashboards.
                   </p>
                   <p className="text-sm text-zinc-300">
-                    <span className="text-cyan-100">Warp:</span> Led full-stack teams
-                    shipping critical product systems with clean architecture.
+                    <span className="text-cyan-100">Karbon Cards:</span> Built forex,
+                    operations, and CA dashboards with TypeScript and Recoil.
+                  </p>
+                  <p className="text-sm text-zinc-300">
+                    <span className="text-cyan-100">Juspay:</span> Improved payment
+                    page UX and worked on Hypercheckout payment page customization.
                   </p>
                 </div>
               </CardContent>
@@ -102,7 +107,11 @@ export function AboutSection() {
                 <Card key={milestone.label} className="bg-black/30">
                   <CardContent className="p-6">
                     <p className="text-3xl font-semibold text-cyan-100">
-                      <AnimatedCounter to={milestone.value} suffix={milestone.suffix} />
+                      {"display" in milestone ? (
+                        milestone.display
+                      ) : (
+                        <AnimatedCounter to={milestone.value} suffix={milestone.suffix} />
+                      )}
                     </p>
                     <p className="mt-2 text-sm text-zinc-300">{milestone.label}</p>
                   </CardContent>
