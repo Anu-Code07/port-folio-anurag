@@ -138,27 +138,66 @@ export const projects: Project[] = [
   },
 ];
 
-export const experiences = [
+export interface Experience {
+  period: string;
+  role: string;
+  company: string;
+  mission: string;
+  achievements?: string[];
+}
+
+export const experiences: Experience[] = [
   {
-    period: "2024 - Present",
-    role: "Senior Flutter & Full Stack Engineer",
-    company: "Stellar Labs",
+    period: "Aug 2025 - Present",
+    role: "SDE 2",
+    company: "Scapia",
     mission:
-      "Led architecture for fintech mobile products and high-scale web systems with strict reliability requirements.",
+      "Building high-impact travel and commerce experiences across Scapia's app ecosystem.",
+    achievements: [
+      "Built Scapia Store from scratch, now driving INR 1.2 crore in monthly transaction volume",
+      "Built an automated testing framework using Maestro across all Scapia verticals to catch UI regressions before release",
+      "Built Scapia Buses to scale the vertical as a new travel offering",
+      "Built Spitha, a server-driven UI framework for instant home page and category/vertical landing page merchandising without app releases",
+    ],
   },
   {
-    period: "2021 - 2024",
-    role: "Lead Frontend Engineer",
-    company: "Orbital Systems",
+    period: "Sep 2023 - Aug 2025",
+    role: "SDE 1",
+    company: "Niyo: Global Cards for Travel",
     mission:
-      "Built immersive analytics products with React, Next.js, and resilient API orchestration patterns.",
+      "Delivered mobile, payments, rewards, and internal tooling across Niyo's travel finance products.",
+    achievements: [
+      "One of the first developers to champion React Native in a Flutter-dominant environment",
+      "Developed CRED-style loyalty rewards with coins for flight booking and visa flows",
+      "Worked on multi-bank integrations with Utkarsh Small Finance Bank and SBM for the NiyoX app",
+      "Created a payment SDK plugin supporting payments through multiple gateways including Razorpay and PayU",
+      "Built a React dashboard for the PG SDK and Rewards to help operations teams manage transactions",
+      "Developed a React Native agent onboarding app for INSTA Card KIT management",
+    ],
   },
   {
-    period: "2018 - 2021",
-    role: "Flutter Engineer",
-    company: "Nova Mobility",
+    period: "Jul 2022 - Aug 2023",
+    role: "SDE 1, UI",
+    company: "Karbon Cards",
     mission:
-      "Created production-grade cross-platform experiences with offline sync and secure local-first capabilities.",
+      "Built TypeScript dashboards and internal workflows for forex, operations, and compliance teams.",
+    achievements: [
+      "Gained hands-on experience with TypeScript and Recoil for state management",
+      "Built a Forex Dashboard for invoice uploads and payment details while internal teams handled processing",
+      "Built Operations Dashboard tools for chat, file view/download, transaction tracking, and internal transaction support",
+      "Built CA Dashboard flows for 15CA/CB uploads, verification, and CA assignments for document preparation",
+    ],
+  },
+  {
+    period: "Jan 2022 - Jun 2022",
+    role: "SDE Intern",
+    company: "Juspay",
+    mission:
+      "Improved checkout and payment customization experiences across Juspay payment products.",
+    achievements: [
+      "Improved the payments page experience",
+      "Worked on Hypercheckout, enabling brands to customize payment pages",
+    ],
   },
 ];
 

@@ -43,8 +43,18 @@ export function ExperienceSection() {
                       {experience.company}
                     </p>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="space-y-3">
                     <p className="text-sm text-zinc-300">{experience.mission}</p>
+                    {experience.achievements ? (
+                      <ul className="space-y-2 text-sm text-zinc-300">
+                        {experience.achievements.map((achievement) => (
+                          <li key={achievement} className="flex gap-2">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </CardContent>
                 </Card>
               </motion.div>
