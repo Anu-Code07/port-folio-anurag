@@ -1,7 +1,7 @@
 export const heroTypewriterLines = [
-  "Building Digital Universes",
-  "Flutter Engineer. Web Architect. Experience Creator.",
-  "Crafting futuristic digital experiences.",
+  "Front End Developer",
+  "React. React Native. Flutter. Next.js.",
+  "Building scalable consumer products and developer tooling.",
 ];
 
 export const skills = [
@@ -37,7 +37,7 @@ export interface Project {
   title: string;
   description: string;
   techStack: string[];
-  github: string;
+  github?: string;
   demo?: string;
   imageUrl?: string;
   highlights: string[];
@@ -46,49 +46,105 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "NebulaPay Fintech Core",
+    title: "Neuron",
     description:
-      "A cross-platform Flutter + Next.js fintech suite with real-time risk scoring and fraud prevention controls.",
-    techStack: ["Flutter", "Dart", "Node.js", "GraphQL", "AWS"],
-    github: "https://github.com",
-    demo: "https://vercel.com",
+      "An AI context engine that stores, organizes, and retrieves project memory across tools and sessions.",
+    techStack: ["Next.js 15", "Supabase", "Postgres", "pgvector", "MCP"],
+    github: "https://github.com/Anu-Code07/neuron",
+    demo: "https://neuron-azure.vercel.app",
     highlights: [
-      "Event-driven architecture with domain boundaries",
-      "Offline-first wallet synchronization",
-      "Latency reduced by 41% through cache strategy",
+      "Structured memory for Cursor, Claude, and MCP clients",
+      "31 MCP tools for remembering, retrieving, and managing context",
+      "Hybrid retrieval with knowledge graph and Groq-powered AI tools",
     ],
     solved:
-      "Solved payment concurrency and reconciliation drift by introducing deterministic transaction snapshots.",
+      "Gives AI coding tools durable, project-aware memory without exposing backend credentials to clients.",
   },
   {
-    title: "OrbitOps Dev Platform",
+    title: "SpecDrive",
     description:
-      "A command center dashboard for multi-region deployments, feature flags, and CI telemetry with cinematic UX.",
-    techStack: ["Next.js", "TypeScript", "Docker", "CI/CD", "REST APIs"],
-    github: "https://github.com",
-    demo: "https://vercel.com",
+      "A spec-driven development framework that turns written specs into structured implementation plans.",
+    techStack: ["TypeScript", "CLI", "MCP", "Flutter", "Next.js"],
+    github: "https://github.com/Anu-Code07/spec-copilot",
+    demo: "https://anu-code07.github.io/spec-copilot/",
     highlights: [
-      "Live pipeline observability and release gates",
-      "Progressive hydration for high-performance metrics panels",
-      "Adaptive alerting with smart noise suppression",
+      "Kiro-style requirements, gap analysis, design, and task documents",
+      "First-class support for Flutter, Next.js, and React Native",
+      "CLI and MCP workflows for frontend implementation review",
     ],
     solved:
-      "Reduced incident response time using integrated runbook actions and contextual trace links.",
+      "Creates a structured frontend planning path from feature idea to implementation tasks with AI assistance.",
   },
   {
-    title: "Astra SDK Suite",
+    title: "DesignToCode MCP",
     description:
-      "A developer-first SDK and docs portal powering AI automation features for enterprise workflow products.",
-    techStack: ["TypeScript", "Node.js", "Firebase", "GraphQL", "Docker"],
-    github: "https://github.com",
-    demo: "https://vercel.com",
+      "An MCP server that takes Figma designs and converts them directly into implementation-ready code.",
+    techStack: ["MCP", "TypeScript", "Figma", "AI tooling", "Frontend"],
+    github: "https://github.com/Anu-Code07/figma-to-code",
     highlights: [
-      "Typed APIs with resilient retry policies",
-      "Versioned SDK release channels",
-      "Telemetry instrumentation with privacy controls",
+      "Bridges Figma design context into coding assistants",
+      "Targets faster handoff from visual design to frontend implementation",
+      "Built around AI-assisted developer workflows",
     ],
     solved:
-      "Fixed breaking contract changes by implementing schema diff checks in CI and compatibility adapters.",
+      "Reduces the gap between Figma files and maintainable frontend code in AI-native development loops.",
+  },
+  {
+    title: "react-native-overlay",
+    description:
+      "An in-app developer tools overlay for React Native that records runtime activity for faster debugging.",
+    techStack: ["React Native", "TypeScript", "Dev tools", "Networking", "Debugging"],
+    github: "https://github.com/Anu-Code07/rn-debug-overlay",
+    highlights: [
+      "Captures errors, network requests, and runtime activity",
+      "Designed for debugging directly on device",
+      "Speeds up feedback loops without leaving the app",
+    ],
+    solved:
+      "Makes React Native debugging faster by keeping critical runtime signals visible inside the app.",
+  },
+  {
+    title: "Chat Application",
+    description:
+      "A Discord-style chat app supporting text chat, voice chat, video calls, and server-based collaboration.",
+    techStack: ["Next.js", "Zustand", "Prisma ORM", "SQL", "Realtime"],
+    github: "https://github.com/Anu-Code07/discord",
+    demo: "https://discord-nine-tawny.vercel.app/",
+    highlights: [
+      "Text chat, voice chat, and video call support",
+      "Discord-style server and channel experience",
+      "State-managed frontend with persistent backend data",
+    ],
+    solved:
+      "Combines realtime collaboration patterns with a polished Next.js frontend experience.",
+  },
+  {
+    title: "The Anurag Store",
+    description:
+      "An e-commerce site with admin-controlled merchandising, filtering, search, cart, and checkout flows.",
+    techStack: ["Next.js", "Prisma ORM", "SQL", "Zustand", "React Query"],
+    github: "https://github.com/Anu-Code07/ecom-store",
+    demo: "https://ecom-store-sigma.vercel.app/",
+    highlights: [
+      "Admin dashboard for images, prices, banners, and campaigns",
+      "Filtering, search, cart, and checkout experience",
+      "React Query and Zustand for server/client state boundaries",
+    ],
+    solved:
+      "Lets admins update storefront content and campaign banners without code changes.",
+  },
+  {
+    title: "Amazon Price Tracker",
+    description:
+      "A React Native price tracker built after manually monitoring PS5 prices and wanting automatic drop alerts.",
+    techStack: ["React Native", "JavaScript", "Mobile UI", "Alerts", "Automation"],
+    highlights: [
+      "Monitors product prices automatically",
+      "Sends alerts when tracked products drop in price",
+      "Turns a manual buying workflow into a mobile utility",
+    ],
+    solved:
+      "Automates repetitive price checks so users can act quickly when a product becomes affordable.",
   },
   {
     title: "Orbit Notes",
@@ -103,7 +159,7 @@ export const projects: Project[] = [
       "AI trip planning that can become a real journal",
     ],
     solved:
-      "Kept travel memories private and available offline while making sync optional when users want it.",
+      "Keeps travel memories private and available offline while making sync optional when users want it.",
   },
   {
     title: "Pulse Habit Tracker",
@@ -118,37 +174,7 @@ export const projects: Project[] = [
       "Home screen widget for habits and focus minutes",
     ],
     solved:
-      "Reduced habit-tracking friction with account-free local data and lightweight progress feedback.",
-  },
-  {
-    title: "Neuron",
-    description:
-      "A context operating system for AI clients with structured project memory, retrieval, and MCP tooling.",
-    techStack: ["Next.js 15", "Supabase", "Postgres", "pgvector", "MCP"],
-    github: "https://github.com/Anu-Code07/neuron",
-    demo: "https://neuron-azure.vercel.app",
-    highlights: [
-      "Hosted dashboard with project memory setup",
-      "31 MCP tools for remembering, retrieving, and managing context",
-      "Hybrid retrieval with knowledge graph and Groq-powered AI tools",
-    ],
-    solved:
-      "Gave AI coding tools durable, project-aware memory without exposing backend credentials to clients.",
-  },
-  {
-    title: "SpecDrive",
-    description:
-      "An AI-agnostic frontend spec-driven development framework for Flutter, Next.js, and React Native.",
-    techStack: ["TypeScript", "CLI", "MCP", "Flutter", "Next.js"],
-    github: "https://github.com/Anu-Code07/spec-copilot",
-    demo: "https://anu-code07.github.io/spec-copilot/",
-    highlights: [
-      "Kiro-style requirements, gap analysis, design, and task documents",
-      "First-class support for Flutter, Next.js, and React Native",
-      "CLI and MCP workflows for frontend implementation review",
-    ],
-    solved:
-      "Created a structured frontend planning path from feature idea to implementation tasks with AI assistance.",
+      "Reduces habit-tracking friction with account-free local data and lightweight progress feedback.",
   },
 ];
 
@@ -217,8 +243,9 @@ export const experiences: Experience[] = [
 
 export const commandActions = [
   { label: "Jump to Hero", value: "hero", selector: "#hero" },
+  { label: "Jump to Profile", value: "profile", selector: "#about" },
   { label: "Jump to Projects", value: "projects", selector: "#projects" },
   { label: "Jump to Experience", value: "experience", selector: "#experience" },
   { label: "Jump to Game Zone", value: "game", selector: "#game-zone" },
-  { label: "Open Mission Control", value: "contact", selector: "#contact" },
+  { label: "Open Contact", value: "contact", selector: "#contact" },
 ];

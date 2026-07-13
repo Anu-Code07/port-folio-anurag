@@ -7,10 +7,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const logs = [
-  "> booting mission-control kernel...",
-  "> syncing flutter satellites...",
-  "> warming next.js edge nodes...",
-  "> diagnostics: all systems operational.",
+  "> loading anurag-kumar-singh.profile...",
+  "> indexing react, react-native, flutter, next.js...",
+  "> checking maestro regression coverage...",
+  "> frontend systems ready.",
 ];
 
 export function TerminalMode() {

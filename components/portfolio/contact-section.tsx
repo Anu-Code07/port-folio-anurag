@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AtSign, Contact, Download, GitBranch, Globe, Mail, Send } from "lucide-react";
+import { Contact, Download, GitBranch, Globe, Mail, MapPin, Phone, Send } from "lucide-react";
 
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { Badge } from "@/components/ui/badge";
@@ -17,15 +17,15 @@ export function ContactSection() {
     <section id="contact" className="py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          eyebrow="MISSION CONTROL"
-          title="Open a secure communication channel"
-          description="Send mission details, collaboration goals, or architecture challenges and receive a high-clarity strategic response."
+          eyebrow="CONTACT"
+          title="Let's talk frontend, mobile, and AI tooling"
+          description="Reach out for product engineering, frontend platform work, React Native/Flutter apps, or developer tooling collaborations."
         />
 
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <Card className="reveal-section border-cyan-300/25 bg-black/40">
             <CardHeader>
-              <CardTitle>Futuristic Communication Terminal</CardTitle>
+              <CardTitle>Send a Message</CardTitle>
             </CardHeader>
             <CardContent>
               <form
@@ -39,15 +39,15 @@ export function ContactSection() {
                   <Input required placeholder="Your Name" />
                   <Input required type="email" placeholder="you@company.com" />
                 </div>
-                <Input required placeholder="Subject: Mission Brief" />
-                <Textarea required placeholder="Describe your mission..." />
+                <Input required placeholder="Subject" />
+                <Textarea required placeholder="Tell me what you are building..." />
                 <Button type="submit" className="w-full sm:w-auto">
                   <Send className="h-4 w-4" />
-                  Transmit Message
+                  Send Message
                 </Button>
                 {sent ? (
                   <p className="text-sm text-emerald-300">
-                    Transmission sent. Mission Control will respond shortly.
+                    Message ready. Please send it through your preferred email client.
                   </p>
                 ) : null}
               </form>
@@ -62,13 +62,22 @@ export function ContactSection() {
               <CardContent className="space-y-3 text-sm">
                 <a
                   className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
-                  href="mailto:anurag@mission.dev"
+                  href="mailto:anurag.kr.singh07@gmail.com"
                 >
-                  <Mail className="h-4 w-4 text-cyan-100" /> anurag@mission.dev
+                  <Mail className="h-4 w-4 text-cyan-100" /> anurag.kr.singh07@gmail.com
                 </a>
                 <a
                   className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
-                  href="https://linkedin.com"
+                  href="tel:+918892823988"
+                >
+                  <Phone className="h-4 w-4 text-cyan-100" /> +91 8892823988
+                </a>
+                <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100">
+                  <MapPin className="h-4 w-4 text-cyan-100" /> Bengaluru, India
+                </div>
+                <a
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
+                  href="https://www.linkedin.com/in/anurag-kumar-singh-14473718a/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -76,7 +85,7 @@ export function ContactSection() {
                 </a>
                 <a
                   className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
-                  href="https://github.com"
+                  href="https://github.com/Anu-Code07"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -84,19 +93,11 @@ export function ContactSection() {
                 </a>
                 <a
                   className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
-                  href="https://x.com"
+                  href="https://port-folio-anurag.vercel.app"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <AtSign className="h-4 w-4 text-cyan-100" /> Twitter / X
-                </a>
-                <a
-                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/45 px-4 py-3 text-zinc-100 transition-colors hover:border-cyan-200/70"
-                  href="https://anurag.dev"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Globe className="h-4 w-4 text-cyan-100" /> Personal Domain
+                  <Globe className="h-4 w-4 text-cyan-100" /> Portfolio
                 </a>
               </CardContent>
             </Card>
@@ -106,8 +107,9 @@ export function ContactSection() {
                 <CardTitle>Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
-                <Badge>Available for consulting</Badge>
-                <Badge variant="muted">Remote + Hybrid</Badge>
+                <Badge>Front End Developer</Badge>
+                <Badge variant="muted">React Native + Flutter</Badge>
+                <Badge variant="muted">Bengaluru / Remote</Badge>
                 <Button asChild variant="ghost">
                   <a href="#" download>
                     <Download className="h-4 w-4" /> Download Resume

@@ -36,8 +36,8 @@ export function AiAssistantOrb() {
               AI Orb Assistant
             </p>
             <p className="text-zinc-300">
-              Try Cmd/Ctrl + K to open mission commands or enter the game zone to
-              unlock secret galaxy mode.
+              Try Cmd/Ctrl + K to jump through profile, projects, experience,
+              and contact sections.
             </p>
           </motion.div>
         ) : null}

@@ -1,6 +1,6 @@
-# Futuristic Space Portfolio
+# Anurag Kumar Singh Portfolio
 
-A cinematic, premium, sci-fi themed developer portfolio for a Senior Flutter + Full Stack Web Engineer.
+A cinematic developer portfolio for a Front End Developer focused on React, React Native, Flutter, Next.js, AI tooling, and server-driven UI systems.
 
 ## Stack
 

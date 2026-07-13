@@ -49,7 +49,7 @@ export function CommandPalette({ onNavigate }: CommandPaletteProps) {
           <Search className="h-4 w-4 text-cyan-200" />
           <Command.Input
             className="w-full bg-transparent text-sm text-zinc-100 outline-none placeholder:text-zinc-400"
-            placeholder="Search mission commands..."
+            placeholder="Search portfolio sections..."
           />
         </div>
         <Command.List className="max-h-80 overflow-y-auto">

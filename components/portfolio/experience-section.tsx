@@ -13,8 +13,8 @@ export function ExperienceSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="EXPERIENCE JOURNEY"
-          title="Vertical mission timeline with animated checkpoints"
-          description="A progressive path of impact across fintech, product engineering, and full-stack platform architecture."
+          title="Product engineering timeline with measurable frontend impact"
+          description="A progressive path across travel commerce, payments, fintech dashboards, React Native adoption, Flutter products, and developer tooling."
         />
 
         <div className="relative mx-auto max-w-4xl">

@@ -13,20 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Anurag | Futuristic Senior Flutter + Full Stack Portfolio",
+  title: "Anurag Kumar Singh | Front End Developer",
   description:
-    "A cinematic, space-themed, highly interactive developer portfolio built with Next.js 15, Framer Motion, GSAP, and Three.js.",
+    "Front End Developer portfolio for Anurag Kumar Singh, covering React, React Native, Flutter, Next.js, AI tooling, and server-driven UI systems.",
   keywords: [
-    "Senior Flutter Developer",
-    "Full Stack Web Developer",
+    "Anurag Kumar Singh",
+    "Front End Developer",
+    "React Developer",
+    "React Native Developer",
+    "Flutter Developer",
     "Next.js Portfolio",
-    "Cinematic UI",
-    "Interactive 3D Website",
+    "AI Developer Tooling",
   ],
   openGraph: {
-    title: "Anurag // Building Digital Universes",
+    title: "Anurag Kumar Singh // Front End Developer",
     description:
-      "Premium sci-fi inspired portfolio featuring immersive animations, interactive 3D, and full-stack engineering craft.",
+      "Portfolio featuring frontend products, mobile apps, AI tooling, server-driven UI systems, and production engineering impact.",
     type: "website",
   },
 };

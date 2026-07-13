@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { label: "Mission", selector: "#about" },
+  { label: "Profile", selector: "#about" },
   { label: "Projects", selector: "#projects" },
   { label: "Game Zone", selector: "#game-zone" },
   { label: "Experience", selector: "#experience" },
-  { label: "Mission Control", selector: "#contact" },
+  { label: "Contact", selector: "#contact" },
 ];
 
 interface NavbarProps {

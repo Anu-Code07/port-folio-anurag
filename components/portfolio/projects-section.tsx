@@ -114,24 +114,26 @@ function HolographicProjectCard({
           </div>
 
           <div className="space-y-2 text-sm text-zinc-300">
-            <p className="font-medium text-cyan-100">Architecture Highlights</p>
+            <p className="font-medium text-cyan-100">Impact Highlights</p>
             <ul className="space-y-1">
               {project.highlights.map((highlight) => (
                 <li key={highlight}>• {highlight}</li>
               ))}
             </ul>
-            <p className="text-xs text-zinc-400">Challenge solved: {project.solved}</p>
+            <p className="text-xs text-zinc-400">Built for: {project.solved}</p>
           </div>
 
           <div className="flex items-center gap-3 text-sm">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-cyan-100 transition-colors hover:text-cyan-300"
-            >
-              <GitBranch className="h-4 w-4" /> GitHub
-            </a>
+            {project.github ? (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-cyan-100 transition-colors hover:text-cyan-300"
+              >
+                <GitBranch className="h-4 w-4" /> GitHub
+              </a>
+            ) : null}
             {project.demo ? (
               <a
                 href={project.demo}
@@ -194,9 +196,9 @@ export function ProjectsSection() {
     <section id="projects" className="py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          eyebrow="PROJECT STATIONS"
-          title="Floating holographic systems in active orbit"
-          description="Every mission card is built as a cinematic control panel with motion layers, architecture insights, and production outcomes."
+          eyebrow="SELECTED PROJECTS"
+          title="Frontend products, AI tooling, and mobile experiments"
+          description="A focused project deck covering AI context engines, spec-driven development, React Native tooling, commerce, chat, and Flutter apps."
         />
 
         {isMobileOrTablet ? (
@@ -206,7 +208,7 @@ export function ProjectsSection() {
             ))}
           </div>
         ) : (
-          <div ref={sectionRef} className="relative h-[230vh]">
+          <div ref={sectionRef} className="relative h-[340vh]">
             <div className="sticky top-24 space-y-4">
               <p className="text-center text-xs tracking-[0.28em] text-cyan-100/80">
                 SCROLL TO NAVIGATE PROJECT DECK
