@@ -46,28 +46,34 @@ export function PortfolioExperience() {
       return;
     }
 
-    const context = new window.AudioContext();
-    const oscillator = context.createOscillator();
-    const gain = context.createGain();
-    const filter = context.createBiquadFilter();
+    // Soothing space ambience: "Endless Space" by SolusLunes (CC BY 3.0),
+    // sourced from Wikimedia Commons and looped as a background bed.
+    const targetVolume = 0.5;
+    const audio = new Audio("/space-ambient.mp3");
+    audio.loop = true;
+    audio.preload = "auto";
+    audio.volume = 0;
+    void audio.play().catch(() => {
+      // Playback can be blocked until a user gesture; the toggle itself is one.
+    });
 
-    oscillator.type = "triangle";
-    oscillator.frequency.value = 70;
-    filter.type = "lowpass";
-    filter.frequency.value = 420;
-    gain.gain.value = 0.006;
-
-    oscillator.connect(filter);
-    filter.connect(gain);
-    gain.connect(context.destination);
-    oscillator.start();
+    const fadeIn = window.setInterval(() => {
+      audio.volume = Math.min(targetVolume, Number((audio.volume + 0.03).toFixed(3)));
+      if (audio.volume >= targetVolume) {
+        window.clearInterval(fadeIn);
+      }
+    }, 60);
 
     return () => {
-      oscillator.stop();
-      oscillator.disconnect();
-      filter.disconnect();
-      gain.disconnect();
-      void context.close();
+      window.clearInterval(fadeIn);
+      const fadeOut = window.setInterval(() => {
+        audio.volume = Math.max(0, Number((audio.volume - 0.05).toFixed(3)));
+        if (audio.volume <= 0.001) {
+          window.clearInterval(fadeOut);
+          audio.pause();
+          audio.src = "";
+        }
+      }, 40);
     };
   }, [soundOn]);
 
