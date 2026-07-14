@@ -76,77 +76,6 @@ export const projects: Project[] = [
       "Creates a structured frontend planning path from feature idea to implementation tasks with AI assistance.",
   },
   {
-    title: "DesignToCode MCP",
-    description:
-      "An MCP server that takes Figma designs and converts them directly into implementation-ready code.",
-    techStack: ["MCP", "TypeScript", "Figma", "AI tooling", "Frontend"],
-    github: "https://github.com/Anu-Code07/figma-to-code",
-    highlights: [
-      "Bridges Figma design context into coding assistants",
-      "Targets faster handoff from visual design to frontend implementation",
-      "Built around AI-assisted developer workflows",
-    ],
-    solved:
-      "Reduces the gap between Figma files and maintainable frontend code in AI-native development loops.",
-  },
-  {
-    title: "react-native-overlay",
-    description:
-      "An in-app developer tools overlay for React Native that records runtime activity for faster debugging.",
-    techStack: ["React Native", "TypeScript", "Dev tools", "Networking", "Debugging"],
-    github: "https://github.com/Anu-Code07/rn-debug-overlay",
-    highlights: [
-      "Captures errors, network requests, and runtime activity",
-      "Designed for debugging directly on device",
-      "Speeds up feedback loops without leaving the app",
-    ],
-    solved:
-      "Makes React Native debugging faster by keeping critical runtime signals visible inside the app.",
-  },
-  {
-    title: "Chat Application",
-    description:
-      "A Discord-style chat app supporting text chat, voice chat, video calls, and server-based collaboration.",
-    techStack: ["Next.js", "Zustand", "Prisma ORM", "SQL", "Realtime"],
-    github: "https://github.com/Anu-Code07/discord",
-    demo: "https://discord-nine-tawny.vercel.app/",
-    highlights: [
-      "Text chat, voice chat, and video call support",
-      "Discord-style server and channel experience",
-      "State-managed frontend with persistent backend data",
-    ],
-    solved:
-      "Combines realtime collaboration patterns with a polished Next.js frontend experience.",
-  },
-  {
-    title: "The Anurag Store",
-    description:
-      "An e-commerce site with admin-controlled merchandising, filtering, search, cart, and checkout flows.",
-    techStack: ["Next.js", "Prisma ORM", "SQL", "Zustand", "React Query"],
-    github: "https://github.com/Anu-Code07/ecom-store",
-    demo: "https://ecom-store-sigma.vercel.app/",
-    highlights: [
-      "Admin dashboard for images, prices, banners, and campaigns",
-      "Filtering, search, cart, and checkout experience",
-      "React Query and Zustand for server/client state boundaries",
-    ],
-    solved:
-      "Lets admins update storefront content and campaign banners without code changes.",
-  },
-  {
-    title: "Amazon Price Tracker",
-    description:
-      "A React Native price tracker built after manually monitoring PS5 prices and wanting automatic drop alerts.",
-    techStack: ["React Native", "JavaScript", "Mobile UI", "Alerts", "Automation"],
-    highlights: [
-      "Monitors product prices automatically",
-      "Sends alerts when tracked products drop in price",
-      "Turns a manual buying workflow into a mobile utility",
-    ],
-    solved:
-      "Automates repetitive price checks so users can act quickly when a product becomes affordable.",
-  },
-  {
     title: "Orbit Notes",
     description:
       "A local-first Flutter travel journal for trips, daily entries, photos, map pins, and optional cloud sync.",
@@ -175,6 +104,34 @@ export const projects: Project[] = [
     ],
     solved:
       "Reduces habit-tracking friction with account-free local data and lightweight progress feedback.",
+  },
+  {
+    title: "DesignToCode MCP",
+    description:
+      "An MCP server that takes Figma designs and converts them directly into implementation-ready code.",
+    techStack: ["MCP", "TypeScript", "Figma", "AI tooling", "Frontend"],
+    github: "https://github.com/Anu-Code07/figma-to-code",
+    highlights: [
+      "Bridges Figma design context into coding assistants",
+      "Targets faster handoff from visual design to frontend implementation",
+      "Built around AI-assisted developer workflows",
+    ],
+    solved:
+      "Reduces the gap between Figma files and maintainable frontend code in AI-native development loops.",
+  },
+  {
+    title: "react-native-overlay",
+    description:
+      "An in-app developer tools overlay for React Native that records runtime activity for faster debugging.",
+    techStack: ["React Native", "TypeScript", "Dev tools", "Networking", "Debugging"],
+    github: "https://github.com/Anu-Code07/rn-debug-overlay",
+    highlights: [
+      "Captures errors, network requests, and runtime activity",
+      "Designed for debugging directly on device",
+      "Speeds up feedback loops without leaving the app",
+    ],
+    solved:
+      "Makes React Native debugging faster by keeping critical runtime signals visible inside the app.",
   },
 ];
 
