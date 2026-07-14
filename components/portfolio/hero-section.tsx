@@ -79,7 +79,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-10 grid gap-3 sm:grid-cols-3">
+      <div className="pointer-events-none absolute inset-x-0 bottom-10 hidden gap-3 sm:grid sm:grid-cols-3">
         {snippets.map((snippet, index) => (
           <motion.div
             key={snippet}
