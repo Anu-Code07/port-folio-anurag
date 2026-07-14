@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 import { AnimatedCounter } from "@/components/portfolio/animated-counter";
 import { SectionHeading } from "@/components/portfolio/section-heading";
@@ -41,6 +42,10 @@ const milestones = [
 ];
 
 export function AboutSection() {
+  const orbitRef = useRef<HTMLDivElement>(null);
+  // Only spin the skill orbit while it is actually on screen.
+  const orbitInView = useInView(orbitRef, { margin: "0px 0px -15% 0px" });
+
   return (
     <section id="about" className="relative py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -56,10 +61,10 @@ export function AboutSection() {
               <CardTitle>Frontend Tech Core</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="relative mx-auto mb-8 h-72 max-w-sm">
+              <div ref={orbitRef} className="relative mx-auto mb-8 h-72 max-w-sm">
                 <motion.div
                   className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-200/40 bg-cyan-300/10 shadow-[0_0_40px_rgba(56,189,248,0.35)]"
-                  animate={{ scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
+                  animate={orbitInView ? { scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] } : { scale: 1, opacity: 0.7 }}
                   transition={{ duration: 3.4, repeat: Number.POSITIVE_INFINITY }}
                 />
                 {orbitSkills.map((skill, index) => {
@@ -71,7 +76,7 @@ export function AboutSection() {
                     <motion.div
                       key={skill}
                       className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                      animate={{ rotate: 360 }}
+                      animate={orbitInView ? { rotate: 360 } : {}}
                       transition={{
                         duration: 18 + index,
                         repeat: Number.POSITIVE_INFINITY,

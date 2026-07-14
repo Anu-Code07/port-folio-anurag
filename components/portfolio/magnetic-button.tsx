@@ -40,7 +40,12 @@ export function MagneticButton({
   };
 
   return (
-    <motion.div style={{ x: sx, y: sy }} className="inline-block">
+    <motion.div
+      style={{ x: sx, y: sy }}
+      className="inline-block"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.96 }}
+    >
       <Button
         ref={ref}
         className={cn("group overflow-hidden", className)}
