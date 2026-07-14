@@ -32,22 +32,35 @@ export function ContactSection() {
                 className="space-y-4"
                 onSubmit={(event) => {
                   event.preventDefault();
+
+                  const formData = new FormData(event.currentTarget);
+                  const senderName = String(formData.get("name") ?? "").trim();
+                  const senderEmail = String(formData.get("email") ?? "").trim();
+                  const subject = String(formData.get("subject") ?? "").trim();
+                  const message = String(formData.get("message") ?? "").trim();
+
+                  const body = `Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`;
+                  const mailtoUrl = `mailto:anurag.kr.singh07@gmail.com?subject=${encodeURIComponent(
+                    subject,
+                  )}&body=${encodeURIComponent(body)}`;
+
+                  window.location.href = mailtoUrl;
                   setSent(true);
                 }}
               >
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <Input required placeholder="Your Name" />
-                  <Input required type="email" placeholder="you@company.com" />
+                  <Input required name="name" placeholder="Your Name" />
+                  <Input required name="email" type="email" placeholder="you@company.com" />
                 </div>
-                <Input required placeholder="Subject" />
-                <Textarea required placeholder="Tell me what you are building..." />
+                <Input required name="subject" placeholder="Subject" />
+                <Textarea required name="message" placeholder="Tell me what you are building..." />
                 <Button type="submit" className="w-full sm:w-auto">
                   <Send className="h-4 w-4" />
                   Send Message
                 </Button>
                 {sent ? (
                   <p className="text-sm text-emerald-300">
-                    Message ready. Please send it through your preferred email client.
+                    Opening your email client with the message prefilled. Just hit send.
                   </p>
                 ) : null}
               </form>
