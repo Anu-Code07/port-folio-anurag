@@ -1,17 +1,12 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Terminal } from "lucide-react";
 
 import { AnimatedTypewriter } from "@/components/portfolio/animated-typewriter";
+import { AstronautScene } from "@/components/portfolio/astronaut-scene";
 import { MagneticButton } from "@/components/portfolio/magnetic-button";
 import { heroTypewriterLines } from "@/lib/portfolio-data";
-
-const PlanetScene = dynamic(
-  () => import("@/components/portfolio/planet-scene").then((module) => module.PlanetScene),
-  { ssr: false },
-);
 
 interface HeroSectionProps {
   onNavigate: (selector: string) => void;
@@ -79,7 +74,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 1 }}
         >
-          <PlanetScene />
+          <AstronautScene />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(14,165,233,0.28),transparent_60%)]" />
         </motion.div>
       </div>
