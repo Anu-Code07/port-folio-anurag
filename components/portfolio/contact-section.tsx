@@ -111,7 +111,11 @@ export function ContactSection() {
                 <Badge variant="muted">React Native + Flutter</Badge>
                 <Badge variant="muted">Bengaluru / Remote</Badge>
                 <Button asChild variant="ghost">
-                  <a href="#" download>
+                  <a
+                    href="https://drive.google.com/uc?export=download&id=1jv75SCjjGD01aUq_jd6yhyV5YP5MdzRV"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <Download className="h-4 w-4" /> Download Resume
                   </a>
                 </Button>
