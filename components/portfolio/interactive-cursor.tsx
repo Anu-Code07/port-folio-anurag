@@ -33,12 +33,12 @@ export function InteractiveCursor() {
   return (
     <>
       <motion.div
-        className="pointer-events-none fixed z-50 h-7 w-7 rounded-full border border-cyan-200/60"
-        style={{ x: sx, y: sy }}
+        className="pointer-events-none fixed left-0 top-0 z-50 h-7 w-7 rounded-full border border-cyan-200/60"
+        style={{ x: sx, y: sy, willChange: "transform" }}
       />
       <motion.div
-        className="pointer-events-none fixed z-40 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl"
-        style={{ x: sx, y: sy }}
+        className="pointer-events-none fixed left-0 top-0 z-40 h-28 w-28 rounded-full bg-cyan-400/20 blur-2xl"
+        style={{ x: sx, y: sy, willChange: "transform" }}
       />
     </>
   );

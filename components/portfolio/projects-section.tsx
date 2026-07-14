@@ -1,7 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { ExternalLink, GitBranch, Radar } from "lucide-react";
 
 import { useMediaQuery } from "@/hooks/use-media-query";
@@ -10,11 +17,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { projects } from "@/lib/portfolio-data";
 import { cn } from "@/lib/utils";
-
-interface TiltState {
-  rotateX: number;
-  rotateY: number;
-}
 
 function HolographicProjectCard({
   project,
@@ -25,14 +27,19 @@ function HolographicProjectCard({
   index: number;
   className?: string;
 }) {
-  const [tilt, setTilt] = useState<TiltState>({ rotateX: 0, rotateY: 0 });
   const [hovered, setHovered] = useState(false);
 
-  const gradient = useMemo(
-    () =>
-      `radial-gradient(circle at ${50 + tilt.rotateY * 3}% ${50 - tilt.rotateX * 3}%, rgba(34,211,238,0.28), rgba(0,0,0,0) 60%)`,
-    [tilt.rotateX, tilt.rotateY],
-  );
+  // Motion values drive the tilt + glow directly, so moving the mouse no
+  // longer triggers a React re-render of the whole card on every frame.
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springX = useSpring(rotateX, { stiffness: 200, damping: 25, mass: 0.3 });
+  const springY = useSpring(rotateY, { stiffness: 200, damping: 25, mass: 0.3 });
+
+  const transform = useMotionTemplate`perspective(1200px) rotateX(${springX}deg) rotateY(${springY}deg)`;
+  const gradientX = useTransform(springY, (value) => 50 + value * 3);
+  const gradientY = useTransform(springX, (value) => 50 - value * 3);
+  const gradient = useMotionTemplate`radial-gradient(circle at ${gradientX}% ${gradientY}%, rgba(34,211,238,0.28), rgba(0,0,0,0) 60%)`;
 
   return (
     <motion.article
@@ -45,24 +52,21 @@ function HolographicProjectCard({
         const target = event.currentTarget.getBoundingClientRect();
         const offsetX = event.clientX - target.left;
         const offsetY = event.clientY - target.top;
-        setTilt({
-          rotateX: ((offsetY / target.height) * 2 - 1) * -8,
-          rotateY: ((offsetX / target.width) * 2 - 1) * 8,
-        });
+        rotateX.set(((offsetY / target.height) * 2 - 1) * -8);
+        rotateY.set(((offsetX / target.width) * 2 - 1) * 8);
       }}
       onMouseLeave={() => {
         setHovered(false);
-        setTilt({ rotateX: 0, rotateY: 0 });
+        rotateX.set(0);
+        rotateY.set(0);
       }}
       onMouseEnter={() => setHovered(true)}
     >
+      <motion.div className="h-full" style={{ transform, willChange: "transform" }}>
       <Card
-        className="group relative h-full overflow-hidden border-cyan-300/25 bg-black/45 p-0 transition-all duration-500"
-        style={{
-          transform: `perspective(1200px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
-        }}
+        className="group relative h-full overflow-hidden border-cyan-300/25 bg-black/45 p-0"
       >
-        <div className="pointer-events-none absolute inset-0 transition-opacity duration-300" style={{ background: gradient }} />
+        <motion.div className="pointer-events-none absolute inset-0" style={{ background: gradient }} />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.07),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         <CardHeader className="relative z-10">
@@ -147,6 +151,7 @@ function HolographicProjectCard({
           </div>
         </CardContent>
       </Card>
+      </motion.div>
     </motion.article>
   );
 }
