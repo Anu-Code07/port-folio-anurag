@@ -17,25 +17,26 @@ export function AstronautScene() {
       />
 
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-200/25 sm:h-[440px] sm:w-[440px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[290px] w-[290px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-200/30 sm:h-[470px] sm:w-[470px]"
         animate={{ rotate: 360 }}
-        transition={{ duration: 38, ease: "linear", repeat: Number.POSITIVE_INFINITY }}
+        transition={{ duration: 32, ease: "linear", repeat: Number.POSITIVE_INFINITY }}
       >
-        <span className="absolute -top-1.5 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-200 shadow-[0_0_14px_rgba(34,211,238,0.9)]" />
-        <span className="absolute -bottom-1 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-fuchsia-300 shadow-[0_0_12px_rgba(232,121,249,0.85)]" />
+        <span className="absolute -top-1.5 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-200 shadow-[0_0_16px_rgba(34,211,238,0.95)]" />
+        <span className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-fuchsia-300 shadow-[0_0_14px_rgba(232,121,249,0.9)]" />
+        <span className="absolute left-[-5px] top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-sky-200 shadow-[0_0_12px_rgba(125,211,252,0.9)]" />
       </motion.div>
 
       <motion.img
         src="/astronaut.svg"
         alt="Astronaut floating in space next to a planet and rocket"
         draggable={false}
-        className="absolute left-1/2 top-1/2 w-[80%] max-w-[430px] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_25px_60px_rgba(56,189,248,0.35)]"
+        className="absolute left-1/2 top-1/2 w-[68%] max-w-[360px] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_25px_60px_rgba(56,189,248,0.35)]"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{
           opacity: 1,
           scale: 1,
-          y: [0, -18, 0],
-          rotate: [-2.5, 2.5, -2.5],
+          y: [0, -22, 0],
+          rotate: [-3, 3, -3],
         }}
         transition={{
           opacity: { duration: 0.8, ease: "easeOut" },
