@@ -22,6 +22,7 @@ export function Nav() {
     <header className="nav">
       <div className="nav-in">
         <a className="brand" href="#top" aria-label="Anurag Kumar Singh, back to top">
+          <svg className="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#121a2b" /><path d="M22 20v24" stroke="#ff9a76" strokeWidth="4.5" strokeLinecap="round" /><path d="M42 24c0 12-20 8-20 18" fill="none" stroke="#ffd7bf" strokeWidth="4.5" strokeLinecap="round" /><circle cx="22" cy="16" r="6" fill="#121a2b" stroke="#ff9a76" strokeWidth="4.5" /><circle cx="42" cy="19" r="6" fill="#121a2b" stroke="#ffd7bf" strokeWidth="4.5" /><circle cx="22" cy="47" r="7.5" fill="#ff9a76" /></svg>
           <span>Anurag<span className="surname"> Kumar Singh</span></span>
           <span className="branch" aria-live="polite" aria-label={`Current section: ${branch}`}>{branch}</span>
         </a>
