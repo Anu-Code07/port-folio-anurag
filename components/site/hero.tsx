@@ -9,14 +9,14 @@ export function Hero() {
           <span>$ whoami</span><b>anurag</b><i>● online, probably shipping</i>
         </p>
         <h1 id="h1" className="rise" style={{ ["--i" as string]: 1 }}>
-          <span>Hello, world.</span>
-          <span>I’m Anurag. I <em>ship.</em></span>
+          <span>My code compiles</span>
+          <span>on the first try. <em>Mostly.</em></span>
         </h1>
       </div>
       <div>
         <p className="lede rise" style={{ ["--i" as string]: 2 }}>
-          Frontend and mobile engineer, <strong>{person.role}</strong>, shipping apps people actually tap, including a
-          store doing <strong>₹1.2 crore a month</strong>. After hours I build tools for the robots: agents that use real
+          I’m <strong>Anurag</strong>, a frontend and mobile engineer (<strong>{person.role}</strong>) shipping apps people
+          actually tap, including a store doing <strong>₹1.2 crore a month</strong>. After hours I build tools for the robots: agents that use real
           phones safely, memory for AI coding tools, and specs for frontend teams.
         </p>
         <div className="ctas rise" style={{ ["--i" as string]: 3 }}>
