@@ -3,7 +3,7 @@ import { Hero } from "@/components/site/hero";
 import { Log, Stack } from "@/components/site/log";
 import { Motion } from "@/components/site/motion";
 import { Nav } from "@/components/site/nav";
-import { Uptime } from "@/components/site/uptime";
+import { Term } from "@/components/site/term";
 import { Work } from "@/components/site/work";
 import { person, projects } from "@/lib/content";
 
@@ -14,7 +14,7 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
-        <Uptime />
+        <Term />
         <Work />
         <Log />
         <Stack />

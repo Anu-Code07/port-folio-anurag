@@ -187,10 +187,26 @@ export const roles: Role[] = [
   },
 ];
 
-export const stack = [
-  { group: "Mobile", items: ["Flutter", "React Native", "Dart", "Live Activities", "Widgets"] },
-  { group: "Web", items: ["React", "Next.js", "TypeScript", "Tailwind", "Framer Motion"] },
-  { group: "Systems", items: ["Server-driven UI", "Payment SDKs", "Design systems", "State: Zustand, Recoil, React Query"] },
-  { group: "AI tooling", items: ["MCP servers", "Agent safety", "Context engines", "Spec-driven development"] },
-  { group: "Quality", items: ["Maestro", "Automated regression", "Accessibility", "Web performance"] },
-];
+/** The stack as a package.json: every entry says where it was used. */
+export const pkg = {
+  dependencies: [
+    ["react", "dashboards at Karbon and Niyo"],
+    ["react-native", "championed it at Niyo, in a Flutter shop"],
+    ["flutter", "Scapia's app, Pulse, Orbit Notes"],
+    ["next", "Neuron's dashboard, and this site"],
+    ["typescript", "everywhere it compiles"],
+    ["dart", "wherever Flutter goes"],
+  ],
+  devDependencies: [
+    ["maestro", "e2e across every Scapia vertical"],
+    ["@modelcontextprotocol/sdk", "Mobius, Neuron, SpecDrive"],
+    ["rust", "Mobius's own device driver"],
+    ["supabase", "Neuron's backend, pgvector included"],
+    ["zustand + react-query", "client state vs server state"],
+  ],
+  scripts: [
+    ["ship", "spec && build && test && deploy"],
+    ["debug", "console.log('here') && console.log('here 2')"],
+    ["sleep", "command not found"],
+  ],
+} as const;

@@ -1,4 +1,4 @@
-import { roles, stack } from "@/lib/content";
+import { pkg, roles } from "@/lib/content";
 
 export function Log() {
   return (
@@ -31,21 +31,46 @@ export function Log() {
   );
 }
 
+type Line = { indent: number; key?: string; value?: string; open?: string; close?: string; comma?: boolean };
+
+function lines(): Line[] {
+  const out: Line[] = [{ indent: 0, open: "{" }, { indent: 1, key: "name", value: "anurag", comma: true }, { indent: 1, key: "version", value: "4.10.0", comma: true }];
+  const groups = Object.entries(pkg) as [string, readonly (readonly [string, string])[]][];
+  groups.forEach(([group, entries], gi) => {
+    out.push({ indent: 1, key: group, open: "{" });
+    entries.forEach(([k, v], i) => out.push({ indent: 2, key: k, value: v, comma: i < entries.length - 1 }));
+    out.push({ indent: 1, close: "}", comma: gi < groups.length - 1 });
+  });
+  out.push({ indent: 0, close: "}" });
+  return out;
+}
+
 export function Stack() {
+  const ls = lines();
   return (
     <section id="stack" className="wrap" aria-labelledby="h-stack" data-branch="stack">
       <div className="opener">
         <h2 id="h-stack">package.json</h2>
-        <p>The dependencies I actually use, grouped by the problems they solve. No left-pad.</p>
+        <p>What I actually reach for, and where each one earned its place. No left-pad.</p>
       </div>
-      <div className="stack">
-        {stack.map((g) => (
-          <div key={g.group}>
-            <h3>{g.group}</h3>
-            <ul>{g.items.map((i) => <li key={i}>{i}</li>)}</ul>
-          </div>
-        ))}
-      </div>
+      <figure className="pkg">
+        <div className="pkg-bar mono" aria-hidden="true"><span className="dots"><i /><i /><i /></span>~/anurag/package.json</div>
+        <pre className="mono" aria-label="Stack as a package.json">
+          {ls.map((l, i) => (
+            <span className="ln" key={i}>
+              <span className="no" aria-hidden="true">{i + 1}</span>
+              <span>
+                {"  ".repeat(l.indent)}
+                {l.key !== undefined && <><span className="k">&quot;{l.key}&quot;</span><span className="p">: </span></>}
+                {l.value !== undefined && <span className="v">&quot;{l.value}&quot;</span>}
+                {l.open && <span className="p">{l.open}</span>}
+                {l.close && <span className="p">{l.close}</span>}
+                {l.comma && <span className="p">,</span>}
+              </span>
+            </span>
+          ))}
+        </pre>
+      </figure>
     </section>
   );
 }

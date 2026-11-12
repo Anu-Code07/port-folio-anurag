@@ -72,7 +72,7 @@ export function Motion() {
       });
 
       // Section openers and the rest of the content rise once.
-      gsap.utils.toArray<HTMLElement>(".opener, .uptime .wrap > *, .branch > div, .stack > div, .contact > *").forEach((el) => {
+      gsap.utils.toArray<HTMLElement>(".opener, .term-grid > div:first-child, .branch > div, .pkg, .contact > *").forEach((el) => {
         gsap.from(el, { y: 34, opacity: 0, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
       });
     });

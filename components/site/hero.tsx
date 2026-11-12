@@ -15,9 +15,10 @@ export function Hero() {
       </div>
       <div>
         <p className="lede rise" style={{ ["--i" as string]: 2 }}>
-          I’m <strong>Anurag</strong>, a frontend and mobile engineer (<strong>{person.role}</strong>) shipping apps people
-          actually tap, including a store doing <strong>₹1.2 crore a month</strong>. After hours I build tools for the robots: agents that use real
-          phones safely, memory for AI coding tools, and specs for frontend teams.
+          I’m <strong>Anurag</strong>, SDE 2 at <strong>Scapia</strong>, where I build the travel app you tap and a store
+          that clears <strong>₹1.2 crore a month</strong>. Off the clock I write tools for AI agents:{" "}
+          <a href="#mobius">Mobius</a> gives them a phone, <a href="#neuron">Neuron</a> gives them a memory,{" "}
+          <a href="#specdrive">SpecDrive</a> gives them a plan.
         </p>
         <div className="ctas rise" style={{ ["--i" as string]: 3 }}>
           <a className="btn primary" href="#work">git log my work <Arrow /></a>
