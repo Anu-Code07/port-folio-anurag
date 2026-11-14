@@ -4,7 +4,23 @@ import { person, projects } from "@/lib/content";
 
 /** A tiny terminal you can type into. Answers come from the real content; a few are jokes. */
 type Out = { cmd: string; lines: string[] };
-const CHIPS = ["help", "whoami", "ls", "open mobius", "sudo hire-anurag", "git blame", "chai", "rm -rf /"];
+const CHIPS = ["whoami", "ls", "fortune", "sudo hire-anurag", "open mobius", "git blame", "chai", "rm -rf /", "help"];
+const BANNER = [
+  " __ _ _ __  _   _ _ __ __ _  __ _ ",
+  "/ _` | '_ \\| | | | '__/ _` |/ _` |",
+  "| (_| | | | | |_| | | | (_| | (_| |",
+  " \\__,_|_| |_|\\__,_|_|  \\__,_|\\__, |",
+  "                              |___/ ",
+];
+const FORTUNES = [
+  "It works on my machine. Ship the machine.",
+  "There are 2 hard problems: cache invalidation, naming things, and off-by-one errors.",
+  "A good commit message is a love letter to future you.",
+  "The bug is never where you're looking. Look somewhere else. No, not there.",
+  "Today's forecast: 90% chance of 'quick fix', 100% chance it isn't.",
+  "Weeks of coding can save you hours of planning.",
+  "Deleted code is debugged code.",
+];
 
 function go(selector: string) {
   document.querySelector(selector)?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
@@ -37,6 +53,7 @@ function answer(raw: string): string[] | "clear" {
     case "exit": return ["There is no exit. Only main."];
     case "clear": return "clear";
     case "ping": return ["pong. Inbox latency: usually under a day."];
+    case "fortune": return [FORTUNES[Math.floor(Math.random() * FORTUNES.length)]!];
     default: return [`zsh: command not found: ${cmd}. Try 'help'.`];
   }
 }
@@ -75,7 +92,17 @@ export function Term() {
     return () => io.disconnect();
   }, []);
 
-  useEffect(() => { box.current?.scrollTo({ top: box.current.scrollHeight }); }, [hist]);
+  // Keep the prompt in view while an answer types itself out (it grows after the first render).
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const toEnd = () => el.scrollTo({ top: el.scrollHeight });
+    toEnd();
+    const ro = new ResizeObserver(toEnd);
+    [...el.children].forEach((c) => ro.observe(c));
+    const t = setTimeout(() => ro.disconnect(), 4000);
+    return () => { ro.disconnect(); clearTimeout(t); };
+  }, [hist]);
 
   return (
     <section ref={sec} className="term-sec" aria-labelledby="h-term">
@@ -85,12 +112,14 @@ export function Term() {
           <p>It knows my projects, my stack and one very important command. Type <code>help</code> or tap a command.</p>
         </div>
         <div className="term" onClick={() => input.current?.focus()}>
-          <div className="term-bar mono" aria-hidden="true"><span className="dots"><i /><i /><i /></span>anurag@portfolio: ~</div>
+          <div className="term-bar mono" aria-hidden="true"><span className="dots lights"><i /><i /><i /></span><span className="title">anurag@portfolio: ~</span><span className="zsh">zsh</span></div>
           <div className="term-body mono" ref={box} aria-live="polite" data-lenis-prevent>
+            <pre className="banner" aria-label="anurag">{BANNER.join("\n")}</pre>
+            <p className="hello-line">welcome to anurag’s portfolio shell. type <b>help</b>, or tap a key below.</p>
             {hist.map((h, i) => (
               <div key={i} className="blk">
                 <p><span className="ps">anurag@portfolio ~ %</span> {h.cmd}</p>
-                {h.lines.map((l, j) => <p key={j} className="out">{l}</p>)}
+                {h.lines.map((l, j) => <p key={j} className="out" style={{ ["--n" as string]: l.length, ["--d" as string]: `${j * 0.18}s` }}>{l}</p>)}
               </div>
             ))}
             <form className="line" onSubmit={(e) => { e.preventDefault(); if (!val.trim()) return; run(val); setVal(""); }}>
@@ -99,7 +128,7 @@ export function Term() {
                 autoComplete="off" autoCapitalize="off" spellCheck={false} enterKeyHint="go" aria-label="Type a command" />
             </form>
           </div>
-          <div className="chips">
+          <div className="chips" data-lenis-prevent>
             {CHIPS.map((c) => <button key={c} type="button" className="mono" onClick={(e) => { e.stopPropagation(); run(c); }}>{c}</button>)}
           </div>
         </div>

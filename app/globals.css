@@ -139,6 +139,21 @@ p { margin: 0; text-wrap: pretty; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 16px 16px; border-top: 1px dashed var(--line-soft); }
 .chips button { padding: 7px 11px; border-radius: 9px; border: 1px solid var(--line); background: transparent; color: var(--ink-2); font-size: 12.5px; cursor: pointer; transition: border-color .3s, color .3s; }
 .chips button:hover { border-color: var(--live); color: var(--ink); }
+/* the fun layer */
+.term-bar .lights i:nth-child(1) { background: #ff5f57; } .term-bar .lights i:nth-child(2) { background: #febc2e; } .term-bar .lights i:nth-child(3) { background: #28c840; }
+.term-bar .title { flex: 1; text-align: center; margin-right: 40px; }
+.term-bar .zsh { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-3); }
+.term-body { position: relative; }
+.banner { margin: 0 0 6px; font: 600 11px/1.15 var(--f-mono); color: var(--live); text-shadow: 0 0 12px color-mix(in srgb, var(--live) 55%, transparent); white-space: pre; }
+.hello-line { color: var(--ink-3); margin-bottom: 12px !important; }
+.hello-line b { color: var(--ink); font-weight: 500; }
+.ps { text-shadow: 0 0 10px color-mix(in srgb, var(--live) 45%, transparent); }
+.line input { caret-shape: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .term-body .blk:last-of-type .out { overflow: hidden; white-space: nowrap; width: 0; animation: type calc(var(--n) * 18ms + 120ms) steps(var(--n)) var(--d) forwards, unwrap 0s calc(var(--n) * 18ms + 140ms + var(--d)) forwards; }
+}
+@keyframes type { to { width: calc(var(--n) * 1ch); } }
+@keyframes unwrap { to { width: auto; white-space: pre-wrap; overflow: visible; } }
 
 /* section openers */
 .opener { padding-top: clamp(96px, 12vw, 160px); padding-bottom: clamp(36px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: end; }
@@ -273,9 +288,20 @@ footer a { display: inline-block; padding: 12px 4px; margin: -12px 0; }
   .graph { padding: 16px 14px 14px; border-radius: 18px; }
   .graph li { grid-template-columns: 26px 60px minmax(0, 1fr); gap: 6px; min-height: 42px; font-size: 12.5px; }
   .graph-head, .graph-foot { font-size: 11.5px; }
-  .term-body { height: 260px; font-size: 13px; padding: 14px 14px 8px; }
+  .term-body { height: 300px; font-size: 13px; padding: 14px 14px 8px; }
   .line input { font-size: 16px; }
-  .chips { padding: 10px 12px 14px; }
+  .banner { font-size: 8.6px; }
+  .term { border-radius: 20px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--live) 18%, transparent), 0 30px 60px -30px color-mix(in srgb, var(--live) 35%, transparent); }
+  .term-body::after { content: ""; position: sticky; display: block; bottom: 0; height: 0; pointer-events: none; }
+  .term::before { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: repeating-linear-gradient(0deg, transparent 0 2px, color-mix(in oklch, var(--deep) 30%, transparent) 2px 3px); opacity: .5; z-index: 1; }
+  .term { position: relative; }
+  .term-bar .title { margin-right: 0; font-size: 11.5px; }
+  /* the command keys: one swipeable row of raised keys */
+  .chips { flex-wrap: nowrap; overflow-x: auto; gap: 8px; padding: 12px 12px 16px; scroll-snap-type: x proximity; scroll-padding-inline: 12px; scrollbar-width: none; mask-image: linear-gradient(90deg, #000 85%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); position: relative; z-index: 2; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chips button { flex: none; scroll-snap-align: start; padding: 10px 14px; border-radius: 11px; font-size: 13px; color: var(--ink); background: color-mix(in oklch, var(--raise) 85%, transparent); border: 1px solid var(--line); box-shadow: 0 3px 0 var(--line), 0 6px 14px -8px var(--deep); transition: transform .08s, box-shadow .08s; }
+  .chips button:active { transform: translateY(3px); box-shadow: 0 0 0 var(--line); }
+  .chips button:first-child { border-color: color-mix(in srgb, var(--live) 70%, transparent); box-shadow: 0 3px 0 color-mix(in srgb, var(--live) 55%, transparent); }
   .opener { padding-top: 88px; padding-bottom: 8px; gap: 14px; }
   .opener h2 { font-size: clamp(34px, 10vw, 44px); }
   .commit { padding: 56px 0 56px 30px; }
